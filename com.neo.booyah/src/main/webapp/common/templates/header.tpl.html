@@ -1,0 +1,80 @@
+<div style="margin-top: 50px;" ng-controller="headerController" >
+	<ul class="header-ul">
+		<div style="width:95%;margin : 0 auto">
+	        <li><img ng-click="takeMeHome()" src="assets/img/binged-logo-resi.png" style="vertical-align:middle;cursor:pointer"></li>
+	        <div style="margin-left:30px;display : inline-block">
+	        	<li ng-show="loggedIn" ng-click="navigateToFavorites()"><a>My Favorites</a></li>
+	        	<li ng-show="loggedIn">
+		            <a>Watchlists &#9662;</a>
+		            <ul class="dropdown scroll-y min-width-style">
+		                <li ng-repeat="watchlist in watchlists"><a class="dropdown-a-style">{{watchlist.name}}</a></li>
+		            </ul>
+		        </li>
+	        </div>
+	        <div style="display: inline-block;float:right;">
+	        	<li>
+	        		<search-field></search-field>
+	        	</li>
+		        <li>
+		        	<img class="show-dropdown-content" style="cursor:pointer;padding:5px;vertical-align: middle;"" ng-show="loggedIn" alt="User" src="assets/img/user.svg"/>
+		       		 <ul class="dropdown">
+		                <li ng-repeat="menuOption in userMenuOptions | orderBy:weight" ng-click="userMenuOptionClick(menuOption)">
+		                	<a class="dropdown-a-style">{{menuOption.text}}</a>
+		                </li>
+		            </ul>
+		       	</li>
+	        	<li><a ng-click="loginDialog(true)" ng-hide="loggedIn">Sign In</a></li>
+	        </div>
+        </div>
+    </ul>
+    
+    <div id="loginDialog" class="login-dialog" ng-class="{'show-login-dialog': login.showLoginDialog}">
+		<login></login>
+		<register></register>
+	</div>
+</div>
+<!-- <div ng-controller="headerController" >
+	<div class="header-menu-bar-style">
+		<img ng-click="openSideMenu($event)" src="assets/img/hamburger.png" class="hamburger-menu-icon" ng-hide="$root.sideMenuOpen">
+		<img ng-click="closeSideMenu($event)" src="assets/img/close2.png" class="hamburger-menu-icon" ng-show="$root.sideMenuOpen">
+		<img ng-click="takeMeHome()" src="assets/img/binged-logo-resi.png" style="cursor:pointer">
+		<div>
+			<search-field></search-field>
+			<a ng-click="loginDialog(true)" ng-hide="loggedIn">Sign In</a>
+			<img style="cursor:pointer;padding-top:5px;padding-right:5px" ng-click="toggleProfileDropdown($event)" ng-show="loggedIn" alt="User" src="assets/img/user.svg"/>
+		</div>
+	</div>
+	<div id="profileDropdown" class="profile-dropdown-content">
+	    <a ng-repeat="menuOption in userMenuOptions | orderBy:weight" ng-click="userMenuOptionClick(menuOption)">{{menuOption.text}}</a>
+  	</div>
+	<div id="loginDialog" class="login-dialog" ng-class="{'show-login-dialog': login.showLoginDialog}">
+		<login></login>
+		<register></register>
+	</div>
+	  <search-field></search-field>
+</div>
+</div> -->
+
+<!-- <div class="navbar">
+  <a href="#home">Home</a>
+  <a href="#news">News</a>
+  <div class="dropdown">
+    <button class="dropbtn">Dropdown 
+    </button>
+    <div class="dropdown-content">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <button class="dropbtn">Dropdown 
+    </button>
+    <div class="dropdown-content">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </div>
+  <search-field></search-field> 
+</div> -->

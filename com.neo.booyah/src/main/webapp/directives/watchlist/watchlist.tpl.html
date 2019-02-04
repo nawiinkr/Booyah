@@ -1,0 +1,35 @@
+<div name="watchlist-panel"
+	class="watchlist-dialog-content animate-login"
+	ng-submit="saveWatchlist">
+
+	<header>
+		<h3>Add to watchlist</h3>
+	</header>
+	<div style="text-align: center">
+		<input placeholder="Create new watchlist" type="text"
+			ng-model="newWatchlist.name" ng-focus="clearListSelection()" />
+	</div>
+	<div style="text-align: center">
+
+		<h4>
+			<strong>Or Add to existing watchlist</strong>
+		</h4>
+	</div>
+	<div style="overflow-y: scroll; height: 300px">
+		<ul style="list-style: none; padding: 0;">
+			<li ng-class="{'li-selected':watchlist.selected}"
+				ng-click="selectThisWatchlist(watchlist)"
+				ng-repeat="watchlist in watchlists"><a>{{watchlist.name}}</a> <span><img
+					class="check-img" ng-class="{'show-check-img':watchlist.selected}"
+					src="assets/img/check.png" /></span></li>
+		</ul>
+	</div>
+	<footer>
+		<div style="text-align: right">
+			<a class="footer-button footer-button-cancel"
+				ng-click="closeWatchlistDialog()"> Cancel </a> <a
+				class="footer-button footer-button-save"
+				ng-click="saveWatchlist()"> Save </a>
+		</div>
+	</footer>
+</div>

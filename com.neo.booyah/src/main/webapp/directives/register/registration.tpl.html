@@ -1,0 +1,38 @@
+<form name="signupForm" class="login-dialog-content animate-login" ng-submit="createUser()" ng-show="login.signupScreen" novalidate>
+			<span title="Close" ng-click="loginDialog(false)" class="close-dialog">&times;</span>
+			<h1>Sign Up</h1>
+			
+			<label for="name"><b>Name</b></label>
+			<input class="login-input" placeholder="Enter Name" type="text" ng-model="signup.name" name="name" required>
+			<span style="color:red; font-size:13px" ng-show="signupForm.name.$touched && signupForm.name.$invalid">Please enter valid name</span>
+			<br/>
+			<br/>
+			
+			<label for="dob"><b>Date Of Birth</b></label>
+			<input class="login-input" placeholder="Enter DOB" type="date" ng-model="signup.dateOfBirth" name="dob" validate-birth>
+			<div ng-show="signupForm.dob.$invalid">
+			<span style="color:red; font-size:13px" ng-show="(signupForm.dob.$touched && signupForm.dob.$error.invalidDOB)">Please enter valid DOB</span>
+			<span style="color:red; font-size:13px" ng-show="(signupForm.dob.$touched && signupForm.dob.$error.ageRestrict && !signupForm.dob.$error.invalidDOB)">Age should be at-least 13 years</span>
+			</div>
+			<br/>
+			<br/>
+			
+			<label for="username"><b>Email</b></label>
+			<input class="login-input" placeholder="Enter Email" type="email" ng-model="signup.email" name="username" required>
+			<span style="color:red; font-size:13px" ng-show="signupForm.username.$touched && signupForm.username.$invalid">Please enter valid email</span>
+			<br/>
+			<br/>
+			
+			<label for="password"><b>Password</b></label>
+			<input class="login-input" placeholder="Enter Password" type="password" ng-model="signup.password" name="password" required>
+			<span style="color:red; font-size:13px" ng-show="signupForm.password.$touched && signupForm.password.$invalid">Password field cannot be empty</span>
+			
+			
+			<input ng-disabled="signupForm.$invalid" class="login-button" type="submit" value="{{signupSubmitButtonLabel}}"/>
+			
+			<div>
+				<p>Already have an account? 
+					<a class="signup-toggle" ng-click="toggleSignupScreen()">Sign In</a>
+				</p> 
+			</div>
+		</form>

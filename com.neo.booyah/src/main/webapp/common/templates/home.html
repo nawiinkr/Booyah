@@ -1,0 +1,15 @@
+<div class="posters-container" infinite-scroll="loadMore()">
+	<poster-template></poster-template>
+	<div ng-repeat="dummy in dummies" ng-hide="postersLoaded"
+		style="display: inline-flex;" class="poster-border">
+		<img src="assets/img/loading-2.gif" class="poster-img"></img>
+	</div>
+	<div>
+		<img ng-show="loadMoreInProgress" src="assets/img/loading-2.gif"
+			style="height: 40px; width: 40px; padding-top: 10px;"></img>
+	</div>
+	
+	<div id="watchlistDialog" class="login-dialog watchlist-panel" ng-class="{'show-login-dialog': showWatchlistDialog}">
+		<watchlist-template></watchlist-template>
+	</div>
+</div>

@@ -1,0 +1,9 @@
+<div class="posters-container">
+<h1>My Favorites</h1>
+<div ng-repeat="show in favoriteShows"
+		style="display: inline-flex;position:relative" class="show-poster fav-poster">
+		<img title="{{show.name}}" src={{show.imageUrl}}
+			ng-click="openPoster(this)" class=""></img> 
+		<img src="assets/img/delete.png" title="Remove from favorites" ng-click="" class="remove-fav-span-button"/>
+	</div>
+</div>

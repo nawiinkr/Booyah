@@ -1,0 +1,11 @@
+<div id="search-main-div" style="display:inline-block">
+	<form style="display: flex; margin: 3px 0px;" ng-submit="search()">
+		<input type="search" class="search-input" ng-focus="getLiveResults(searchQ)" ng-blur="liveResults=[]" placeholder="Search.." ng-model="searchQ" ng-change="getLiveResults(searchQ)" />
+		 <input type="image" src="assets/img/search-icon.png" class="search-icon"/> 
+	</form>
+	<div class="suggestion-list" ng-show="liveResults.length">
+		<ol ng-repeat="show in liveResults">
+	    	<li  ng-mousedown="openPoster(this)">{{show.name}}</li>
+		</ol>
+  	</div>
+</div>

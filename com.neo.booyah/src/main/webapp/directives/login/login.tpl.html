@@ -1,0 +1,21 @@
+<form name="loginForm" class="login-dialog-content animate-login" ng-submit="userLogin()" ng-hide="login.signupScreen" novalidate>
+			<span title="Close" ng-click="loginDialog(false)" class="close-dialog">&times;</span>
+			<h1>Sign In</h1>
+			
+			<label for="uname"><b>Email</b></label>
+			<input class="login-input" placeholder="Enter Email" type="email" ng-model="loginCreds.user" name="uname" required>
+			<span style="color:red; font-size:13px" ng-show="loginForm.uname.$touched && loginForm.uname.$invalid">Please enter valid email</span>
+			<br/>
+			<br/>
+			<label for="passw"><b>Password</b></label>
+			<input class="login-input" placeholder="Enter Password" type="password" ng-model="loginCreds.password" name="passw" required>
+			<span style="color:red; font-size:13px" ng-show="loginForm.passw.$touched && loginForm.passw.$invalid">Please enter password</span>
+			
+			<input ng-disabled="loginForm.$invalid" class="login-button" value="{{signinSubmitButtonLabel}}" type="submit"/>
+			
+			<div>
+				<p>Don't have an account? 
+					<a class="signup-toggle" ng-click="toggleSignupScreen()">Sign Up</a>
+				</p> 
+			</div>
+		</form>

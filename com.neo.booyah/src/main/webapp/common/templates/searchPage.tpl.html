@@ -1,0 +1,8 @@
+<div ng-show="shows.length">
+	<h1>Search Results for <i>{{query}}</i></h1>
+	<poster-template></poster-template>
+</div>
+<div style="text-align:center" ng-show="postersLoaded && !shows.length">
+	<img style="width: 30%" src="assets/img/no-results.png">
+	<h1> No results found for <i>{{query}}</i></h1>
+<div>

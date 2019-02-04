@@ -1,0 +1,11 @@
+.menu-overlay-open{
+	width : 20%;
+}
+
+.show-poster input[type="image"]{
+	display:none;
+}
+
+.show-poster:hover input[type="image"]{
+	 display:initial;
+}

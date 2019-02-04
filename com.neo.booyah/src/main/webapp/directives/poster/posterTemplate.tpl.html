@@ -1,0 +1,25 @@
+<div ng-repeat="show in shows"
+		style="display: inline-flex;position:relative" class="show-poster">
+		<img title="{{show.name}}" src={{show.imageUrl}}
+			ng-click="openPoster(this)" class="poster-img"></img> 
+			<div class="poster-img-option-div">
+				<input title="Add to watchlist" ng-click="addToWatchlist(this, show)"
+			type="image" src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZmZmZmZmIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz4KICAgIDxwYXRoIGQ9Ik0xNCAxMEgydjJoMTJ2LTJ6bTAtNEgydjJoMTJWNnptNCA4di00aC0ydjRoLTR2Mmg0djRoMnYtNGg0di0yaC00ek0yIDE2aDh2LTJIMnYyeiIvPgo8L3N2Zz4="
+			class="icon-add-list" /> 
+			<!-- <input title="Remove from favorites" ng-click="removeFromFavourites(this, show)"
+			ng-show="show.isFavorite" type="image"
+			src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjN2VjMjNhIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBkPSJNMCAwaDI0djI0SDBWMHoiIGlkPSJhIi8+CiAgICA8L2RlZnM+CiAgICA8Y2xpcFBhdGggaWQ9ImIiPgogICAgICAgIDx1c2Ugb3ZlcmZsb3c9InZpc2libGUiIHhsaW5rOmhyZWY9IiNhIi8+CiAgICA8L2NsaXBQYXRoPgogICAgPHBhdGggY2xpcC1wYXRoPSJ1cmwoI2IpIiBkPSJNMTQgMTBIMnYyaDEydi0yem0wLTRIMnYyaDEyVjZ6TTIgMTZoOHYtMkgydjJ6bTE5LjUtNC41TDIzIDEzbC02Ljk5IDctNC41MS00LjVMMTMgMTRsMy4wMSAzIDUuNDktNS41eiIvPgo8L3N2Zz4="
+			class="icon-add-list" /> -->
+			
+			<input title="Add to favorites" ng-click="addToFavourites(this, show)"
+			type="image" src="assets/img/icon-fav-grey.svg"
+			class="icon-add-favorite" 
+			ng-hide="show.isFavorite"/> 
+			<input title="Remove from favorites" ng-click="removeFromFavourites(this, show)"
+			ng-show="show.isFavorite" type="image"
+			src="assets/img/icon-fav-red.svg"
+			class="icon-add-favorite" />
+			</div>
+			
+	</div>
+	

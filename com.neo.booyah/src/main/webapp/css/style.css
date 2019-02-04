@@ -1,0 +1,550 @@
+body{
+	margin : 0;
+}
+
+.header-ul{
+		margin : 0;
+        padding: 0;
+        list-style: none;
+        background: #333;
+        position : fixed;
+        top:0;
+        width : 100%;
+        z-index : 100;
+    }
+    .header-ul li{
+        display: inline-block;
+        position: relative;
+        line-height: 21px;
+        text-align: left;
+        cursor : pointer;
+    }
+    .header-ul li a{
+        display: block;
+        padding: 13px 3px;
+        color: white;
+        text-decoration: none;
+        opacity : 0.7;
+        margin-right: 10px;
+    }
+    .header-ul li a:hover{
+        opacity : 1;
+  		/* background-color : grey; */
+    }
+    .header-ul li ul.dropdown{
+    	z-index : 100;
+    	border-radius: 10px;
+        min-width: 120px;
+        max-height: 0;
+    	overflow: hidden;
+        padding : 0;
+        background: #ddd;
+        position: absolute;
+        right: 0;
+        margin:2px;
+  		transition: max-height 0.4s ease-out;
+    }
+    
+    .header-ul li:hover ul.dropdown{
+         max-height: 500px;
+    	transition: max-height 0.25s ease-in;
+    }
+    
+    .header-ul li ul.dropdown li{
+        display: block;
+        background : #333;
+    }
+    
+    .scroll-y{
+    	overflow: auto !important;
+    }
+    .min-width-style{
+    	min-width: 180px !important;
+    }
+    
+    .dropdown-a-style{
+    	padding : 0 !important;
+    	padding-top: 5px !important;
+    	padding-left: 10px !important;
+    }
+    .dropdown-a-style:last-child{
+    	padding-bottom: 5px !important;
+    }
+/* .header-menu-bar-style {
+  overflow: hidden;
+    background-color: #333;
+    width: 100%;
+    min-height: 50px;
+    top: 0;
+    position: fixed;
+    z-index: 99;
+}
+
+.navbar {
+    top : 0;
+    position : fixed;
+    width : 100%;
+    overflow: hidden;
+    background-color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+    z-index : 1;
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+    position: fixed !important;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;    
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 3;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.header-menu-bar input[type="search"]{
+  float : left;
+  display : block;
+  height: 35px;
+  width: 200px;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 33px;
+}
+
+.header-menu-bar-style a:hover{
+  color : #000000;
+  background-color : grey; 
+}
+
+.header-menu-bar > div{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	float: right;
+}
+
+input[type=search]:after {
+	content : url("magnifying-glass.gif"); 
+} */
+
+.search-input{
+  display : block;
+  height: 35px;
+  width: 200px;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 33px;
+}
+.search-icon{
+  width	: 30px;
+  height : 30px;
+  margin-left: -32px;
+  margin-right: 10px;
+}
+
+.posters-container{
+	text-align	: center;
+}
+.show-poster{
+	padding-left : 20px;
+	padding-top : 20px;
+	cursor : pointer;
+}
+
+.poster-img{
+	border-radius: 4px;
+}
+
+.poster-img:hover{
+	transform: scale(1.1, 1.1);
+    opacity: 1;
+     transition: 0.5s ease;
+}
+.login-dialog{
+	display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+    overflow: hidden;
+}
+
+.login-dialog-content{
+	padding : 20px;
+	background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 40%;
+}
+.show-login-dialog{
+	display: block;
+}
+
+.watchlist-dialog-content{
+	background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 40%;
+}
+
+.watchlist-dialog-content header,footer{
+	background-color : #f6f6f6;
+	padding : 12px;
+}
+
+.watchlist-dialog-content input[type=text]{
+	width: 70%;
+    border: 3px solid;
+    border-radius: 100px;
+    border-color: #ccc;
+    margin: 10px;
+    line-height: 2;
+    padding-left: 1em;
+    font-family: sans-serif;
+}
+
+.watchlist-dialog-content li{
+	padding : 7px;
+	padding-left : 15px;
+	cursor : pointer;
+}
+
+.watchlist-dialog-content li:hover{
+	background : #ccc;
+}
+
+.li-selected{
+	background : #ccc;
+}
+
+.watchlist-dialog-content input[type=text]:focus {
+    outline: 0;
+}
+
+.check-img{
+	width: 20px;
+    height: 20px;
+    float: right;
+    padding-right: 10px;
+    display : none;
+}
+
+.show-check-img{
+	display : block;
+}
+
+.watchlist-dialog-content h3{
+	margin: 0;
+    font-size: 17px;
+    font-family: sans-serif;
+    color: #3e3e3e;
+    font-weight: initial;
+}
+
+.footer-button{
+	background: transparent;
+    padding: 5px 10px 5px 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size : 20px;
+}
+
+.footer-button-cancel{
+	color: #a9a9a9;
+}
+
+.footer-button-cancel:hover{
+	background: #a9a9a9;
+	color: white
+}
+
+.footer-button-save{
+	background: #333;
+	color : white
+}
+
+.watchlist-panel{
+	text-align : left;
+}
+.close-dialog{
+	font-size : 35px;
+	font-weight : bold;
+	float : right;
+	cursor: pointer;
+	color: black;
+	padding-right : 15px;
+}
+.close-dialog:hover{
+	color : red;
+}
+
+.login-input{
+	width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input.ng-touched.ng-invalid{
+	border: 1px solid red;
+}
+
+.login-button{
+	background-color: #333;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.login-button:hover{
+	opacity : 0.8;
+}
+
+.animate-login {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+.signup-toggle{
+	cursor : pointer;
+	color : #333;
+	font-weight : bold;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-dropdown-content{
+	 display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0;
+}
+.profile-dropdown-content > a{
+	padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor:	pointer;
+    color:	#fff;
+}
+
+.profile-dropdown-content > a:hover{
+	color : #000000;
+  	background-color : grey;
+}
+
+.profile-dropdown-show{
+	display : block;
+}
+.loading-posters{
+	width : 100%;
+	height : 100%;
+}
+.loading-posters img{
+	vertical-align: middle;
+	text-align: center;
+}
+.loading-posters-hide{
+	display : none;
+}
+.poster-border{
+	border-style: outset;
+    border-width: 1px;
+    width:210px;
+    height:295px;
+    margin-left : 20px;
+	margin-top : 20px;
+	border-radius : 4px;
+}
+
+.poster-border img{
+	width : 30px;
+	height : 30px;
+	position: relative;
+    top: 41%;
+    left: 43%;
+}
+.hamburger-menu-icon{
+	width: 40px;
+    height: 40px;
+    padding-top: 2px;
+    padding-left: 3px;
+    cursor: pointer;
+}
+.menu-overlay{
+	height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    background-color: #333;
+    overflow-x: hidden;
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+}
+
+.menu-overlay-content{
+	position: relative;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    align-self: center;
+}
+.menu-overlay-content a{
+	padding: 8px;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+ .menu-overlay-content a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.poster-img-option-div{
+	 position : absolute;
+	bottom : 0;
+	right : 3px;
+}
+.icon-add-list{
+	width : 32px;
+	height : 32px;
+}
+
+.icon-add-favorite{
+	width : 24px;
+	height : 24px;
+}
+
+.notificationArea{
+	min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 3;
+    left: 50%;
+    bottom: 30px;
+}
+.remove-fav-span-button{
+	width:35px;
+	height:35px;
+	right: 0;
+    position: absolute;
+	cursor: pointer;
+	color: black;
+	display:none;
+}
+
+.fav-poster:hover .remove-fav-span-button{
+	display : block;
+}
+
+.suggestion-list{
+	position: absolute;
+    margin-top: 40px;
+    pointer-events: all;
+    background: #333;
+    border-radius: 2px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    transition: all .5s ease-out;
+}
+.suggestion-list ol{
+	margin: 0;
+    padding-left: 0px;
+}
+.suggestion-list li{
+	list-style: none;
+	padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    min-width: 170px;
+    cursor:	pointer;
+    color:	#fff;
+}
+
+.suggestion-list li:hover{
+	color : #000000;
+  	background-color : grey;
+}
