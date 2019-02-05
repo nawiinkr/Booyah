@@ -123,8 +123,8 @@ public class UserDao {
 		  
 		  customerList = query.list();
 		  
-		  session.getTransaction().commit();
-		  session.close();
+		  //session.getTransaction().commit();
+		  //session.close();
 		    
 	      return  customerList;
 	}
@@ -136,14 +136,25 @@ public class UserDao {
 		String email = (String) request.getSession(false).getAttribute("username");
 		
 		Show show = (Show) showDao.getShowDetails(showId).get(0);
-		Customer customer = getUser(email).get(0);
+		String queryString = "select * from Binged.Customer where email = :email";
+		  
+		  session = HibernateUtil.getSessionFactory().openSession();
+	      session.beginTransaction();
+	      
+	      SQLQuery query = session.createSQLQuery(queryString);
+	      
+		  
+		  query.setParameter("email", email);
+		  query.addEntity(Customer.class);
+		  
+		  Customer customer = (Customer) query.list().get(0);
 		
 		customer.addFavoriteShow(show);
 		
-		session = HibernateUtil.getSessionFactory().openSession();
-	    session.beginTransaction();
+		//session = HibernateUtil.getSessionFactory().openSession();
+	    //session.beginTransaction();
 		
-	    session.merge(customer);
+	    session.save(customer);
 		
 	    session.getTransaction().commit();
 	    session.close();
