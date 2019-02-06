@@ -24,7 +24,6 @@ import com.neo.booyah.server.utils.HibernateUtil;
 
 public class ShowsDao {
 	   private Session session;
-	   private static JSONParser parser = new JSONParser();
 	   
 	   //@SuppressWarnings("unchecked")
 		@SuppressWarnings("unchecked")

@@ -7,6 +7,7 @@
         <property name="hibernate.connection.username">binged</property>
         <property name="hibernate.connection.password">Admin@123</property>
         <property name="hibernate.connection.url">jdbc:mysql://den1.mysql1.gear.host:3306/binged</property>
+        <property name="hibernate.enable_lazy_load_no_trans">true</property>
         <property name="show_sql">true</property>
         <property name="format_sql">false</property>
 <!--         <property name="hibernate.hbm2ddl.auto">validate</property> -->
@@ -15,6 +16,7 @@
         <mapping class="com.neo.booyah.server.entity.ShowDTO"/>
         <mapping class="com.neo.booyah.server.entity.Customer"/>
         <mapping class="com.neo.booyah.server.entity.Watchlist"/>
+        <mapping class="com.neo.booyah.server.entity.WatchlistDTO"/>
         
     </session-factory>
 </hibernate-configuration>

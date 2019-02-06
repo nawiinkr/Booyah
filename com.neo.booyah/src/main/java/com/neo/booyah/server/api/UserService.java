@@ -17,6 +17,7 @@ import org.json.simple.JSONObject;
 import com.neo.booyah.server.dao.UserDao;
 import com.neo.booyah.server.entity.Show;
 import com.neo.booyah.server.entity.Watchlist;
+import com.neo.booyah.server.entity.WatchlistDTO;
 @Path("/Users") 
 
 public class UserService {  
@@ -57,8 +58,8 @@ public class UserService {
    @Path("/getWatchlists")
    @Consumes(MediaType.APPLICATION_JSON)
    @Produces(MediaType.APPLICATION_JSON) 
-   public Collection<Watchlist> getWatchlists(@Context HttpServletRequest request){
-	   Collection<Watchlist> wl = userDao.getWatchlists(request);
+   public List<WatchlistDTO> getWatchlists(@Context HttpServletRequest request){
+	   List<WatchlistDTO> wl = userDao.getWatchlists(request);
 	   
 	   return wl;
    }

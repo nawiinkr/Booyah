@@ -7,6 +7,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
 
 import org.json.simple.JSONObject;
 
@@ -19,9 +21,10 @@ public class WatchlistService {
    @POST 
    @Path("/create")
    @Consumes(MediaType.APPLICATION_JSON)
-   @Produces(MediaType.TEXT_PLAIN) 
-   public String createWatchlist(JSONObject inputJsonObj, @Context HttpServletRequest request){ 
-      return watchlistDao.createWatchlist(inputJsonObj, request); 
+   @Produces(MediaType.APPLICATION_JSON) 
+   public Response createWatchlist(JSONObject inputJsonObj, @Context HttpServletRequest request){ 
+      String id = watchlistDao.createWatchlist(inputJsonObj, request);
+	   return Response.ok(id).build();
    }
    
    @POST
@@ -31,37 +34,14 @@ public class WatchlistService {
    public String addFavorite(JSONObject inputJsonObj, @Context HttpServletRequest request){  
       return watchlistDao.addShow(inputJsonObj, request); 
    }
-   
+  
+   /*
    @POST
    @Path("/get")
    @Consumes(MediaType.APPLICATION_JSON)
    @Produces(MediaType.APPLICATION_JSON) 
    public Watchlist getWatchlist(JSONObject inputJsonObj, @Context HttpServletRequest request){  
       return watchlistDao.returnWatchlist(inputJsonObj, request); 
-   }
-   
-   /*@POST
-   @Path("/manage/favorites/add")
-   @Consumes(MediaType.APPLICATION_JSON)
-   @Produces(MediaType.TEXT_PLAIN) 
-   public String addFavorite(JSONObject inputJsonObj, @Context HttpServletRequest request){  
-      return userDao.addFavorite(inputJsonObj, request); 
-   }
-   
-   @POST
-   @Path("/manage/favorites/remove")
-   @Consumes(MediaType.APPLICATION_JSON)
-   @Produces(MediaType.TEXT_PLAIN) 
-   public String removeFavorite(JSONObject inputJsonObj, @Context HttpServletRequest request){  
-      return userDao.removeFavorite(inputJsonObj, request); 
-   }
-   
-   @GET
-   @Path("/manage/favorites/getAllFavorites")
-   @Consumes(MediaType.APPLICATION_JSON)
-   @Produces(MediaType.APPLICATION_JSON) 
-   public Collection<Show> getAllFavorites(@Context HttpServletRequest request){  
-      return userDao.getAllFavorites(request); 
    }*/
    
    

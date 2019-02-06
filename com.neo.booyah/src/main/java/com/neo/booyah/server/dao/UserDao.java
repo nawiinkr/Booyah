@@ -20,6 +20,7 @@ import org.json.simple.JSONObject;
 
 import com.neo.booyah.server.entity.Show;
 import com.neo.booyah.server.entity.Watchlist;
+import com.neo.booyah.server.entity.WatchlistDTO;
 import com.neo.booyah.server.utils.HibernateUtil;
 import com.neo.booyah.server.entity.Customer;
 
@@ -123,8 +124,8 @@ public class UserDao {
 		  
 		  customerList = query.list();
 		  
-		  //session.getTransaction().commit();
-		  //session.close();
+		  session.getTransaction().commit();
+		  session.close();
 		    
 	      return  customerList;
 	}
@@ -215,12 +216,12 @@ public class UserDao {
 	      return  favouriteShows;
 	}
 
-	public Collection<Watchlist> getWatchlists(HttpServletRequest request) {
+	public List<WatchlistDTO> getWatchlists(HttpServletRequest request) {
 		String email = (String) request.getSession(false).getAttribute("username");
 		
 		 Customer customer = null;
 		 
-		  String queryString = "select * from Binged.Customer where email = :email";
+		  /*String queryString = "select * from Binged.Customer where email = :email";
 		  
 		  session = HibernateUtil.getSessionFactory().openSession();
 	      session.beginTransaction();
@@ -231,11 +232,10 @@ public class UserDao {
 		  query.setParameter("email", email);
 		  query.addEntity(Customer.class);
 		  
-		  customer = (Customer) query.list().get(0);
+		  customer = (Customer) query.list().get(0);*/
+		 customer = getUser(email).get(0);
 		  
-		  Collection<Watchlist> watchlists = customer.getWatchlists();
-		  //session.getTransaction().commit();
-		  //session.close();
+		  List<WatchlistDTO> watchlists = WatchlistDao.getWatchlistsByUser(customer.getUserId());
 		    
 	      return  watchlists;
 	}

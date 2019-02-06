@@ -36,12 +36,12 @@ angular.module("app").controller("homeController", function ($scope, $location, 
 		getShows();
 	}
 	
-	function addShowToWatchlist(watchlistName, showId){
+	function addShowToWatchlist(watchlistId, showId){
 		return $http({
 			url : "rest/Watchlist/addShow",
 			method : 'POST',
 			data : {
-				"watchlistName" : watchlistName,
+				"watchlistId" : watchlistId,
 				"showId" : showId
 			}
 		});
@@ -59,7 +59,7 @@ angular.module("app").controller("homeController", function ($scope, $location, 
 	
 	$scope.saveWatchlist = function(){
 		if($scope.selectedWatchlist != null){
-			addShowToWatchlist($scope.selectedWatchlist.name, $scope.selectedShow.showId).then(function(response){
+			addShowToWatchlist($scope.selectedWatchlist.watchlistId, $scope.selectedShow.showId).then(function(response){
 				if(response.data == "ok"){
 					$scope.closeWatchlistDialog();
 					$rootScope.showNotification("Show added to watchlist successfully");
@@ -72,8 +72,8 @@ angular.module("app").controller("homeController", function ($scope, $location, 
 				return;
 			}
 			createNewWatchlist($scope.newWatchlist.name).then(function(response){
-				if(response.data == "ok"){
-					addShowToWatchlist($scope.newWatchlist.name, $scope.selectedShow.showId).then(function(response){
+				if(response.data != "error"){
+					addShowToWatchlist(response.data, $scope.selectedShow.showId).then(function(response){
 						if(response.data == "ok"){
 							$scope.closeWatchlistDialog();
 							$rootScope.showNotification("Show added to watchlist successfully");
