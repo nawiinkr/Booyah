@@ -39,7 +39,7 @@ public class ShowService {
    @GET 
    @Path("/shows/{id}") 
    @Produces(MediaType.APPLICATION_JSON) 
-   public List<Show> getShowDetails(@PathParam("id") String param){ 
+   public Show getShowDetails(@PathParam("id") String param){ 
       return showsDao.getShowDetails(param); 
    }
    

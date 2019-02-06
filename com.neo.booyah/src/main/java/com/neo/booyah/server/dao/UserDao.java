@@ -135,7 +135,7 @@ public class UserDao {
 		String showId = (String)inputJsonObj.get("showId");
 		String email = (String) request.getSession(false).getAttribute("username");
 		
-		Show show = showDao.getShowDetails(showId).get(0);
+		Show show = showDao.getShowDetails(showId);
 		String queryString = "select * from Binged.Customer where email = :email";
 		  
 		  session = HibernateUtil.getSessionFactory().openSession();
@@ -165,7 +165,7 @@ public class UserDao {
 		String showId = (String)inputJsonObj.get("showId");
 		String email = (String) request.getSession(false).getAttribute("username");
 		
-		Show show = showDao.getShowDetails(showId).get(0);
+		Show show = showDao.getShowDetails(showId);
 		String queryString = "select * from Binged.Customer where email = :email";
 		  
 		  session = HibernateUtil.getSessionFactory().openSession();

@@ -96,22 +96,16 @@ public class ShowsDao {
 		   }
 
 	@SuppressWarnings("unchecked")
-	public List<Show> getShowDetails(String param) {
-		  List<Show> showList = null;
-		  
+	public Show getShowDetails(String param) {
+		  Show show = null;
 		  session = HibernateUtil.getSessionFactory().openSession();
 	      session.beginTransaction();
-		  String queryString = "select * from binged.show  where ShowId = :showId";
-		  SQLQuery q = session.createSQLQuery(queryString);
-		  q.setParameter("showId", param);
-		  q.addEntity(Show.class);
-		  
-	      showList = q.list();
 	      
+	      show = (Show) session.get(Show.class, param);
 	      session.getTransaction().commit();
 	      session.close();
 	      
-	      return  showList;
+	      return  show;
 	}
 
 	public String addShows() {
@@ -120,8 +114,6 @@ public class ShowsDao {
 		JSONArray obj = getJSONObjectsArray(stream);
     	session = HibernateUtil.getSessionFactory().openSession();
     	session.beginTransaction();
-        //first check if shows are already present
-        //Query query = em.createQuery("select t from Show t");
 		
 		
 		String query = session.getNamedQuery("Show.findAll").toString();
