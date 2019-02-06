@@ -190,7 +190,7 @@ angular.module('app').controller('headerController', ['$scope','$http', '$rootSc
 			$rootScope.showNotification("Logged in successfully");
 			$route.reload();
 		}
-		loadWatchlists();
+		//loadWatchlists();
 	}
 	
 	function afterLogoutSuccessful(reload) {

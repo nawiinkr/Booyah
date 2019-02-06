@@ -48,7 +48,7 @@ public class Customer{
 	}
 	
 	@JsonIgnore
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
     @JoinTable(name="favorite",joinColumns= @JoinColumn(name="UserId"), inverseJoinColumns= @JoinColumn(name="ShowId"))
     private Collection<Show> favoriteShows;
 	
