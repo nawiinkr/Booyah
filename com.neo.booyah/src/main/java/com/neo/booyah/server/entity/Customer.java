@@ -3,8 +3,10 @@ package com.neo.booyah.server.entity;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
@@ -50,11 +52,11 @@ public class Customer{
 	@JsonIgnore
 	@OneToMany(cascade=CascadeType.ALL)
     @JoinTable(name="favorite",joinColumns= @JoinColumn(name="UserId"), inverseJoinColumns= @JoinColumn(name="ShowId"))
-    private Collection<Show> favoriteShows;
+    private Set<Show> favoriteShows;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
-	private Collection<Watchlist> watchlists;
+	private Set<Watchlist> watchlists;
 	
 	public Customer() {
 		//default constructor
@@ -101,7 +103,7 @@ public class Customer{
 	
 	public void addFavoriteShow(Show show) {
         if (favoriteShows==null) {
-        	favoriteShows = new ArrayList<Show>();
+        	favoriteShows = new HashSet<Show>();
         }
         if (!favoriteShows.contains(show)) {
         	favoriteShows.add(show);

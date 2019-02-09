@@ -35,14 +35,14 @@ public class WatchlistService {
       return watchlistDao.addShow(inputJsonObj, request); 
    }
   
-   /*
+   
    @POST
    @Path("/get")
    @Consumes(MediaType.APPLICATION_JSON)
    @Produces(MediaType.APPLICATION_JSON) 
    public Watchlist getWatchlist(JSONObject inputJsonObj, @Context HttpServletRequest request){  
-      return watchlistDao.returnWatchlist(inputJsonObj, request); 
-   }*/
+      return watchlistDao.returnWatchlist(inputJsonObj); 
+   }
    
    
 }

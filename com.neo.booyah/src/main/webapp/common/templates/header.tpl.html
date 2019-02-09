@@ -1,11 +1,11 @@
 <div style="margin-top: 50px;" ng-controller="headerController" >
 	<ul class="header-ul">
-		<div style="width:95%;margin : 0 auto">
+		<div style="width:98%;margin : 0 auto">
 	        <li><img ng-click="takeMeHome()" src="assets/img/binged-logo-resi.png" style="vertical-align:middle;cursor:pointer"></li>
 	        <div style="margin-left:30px;display : inline-block">
 	        	<li ng-show="loggedIn" ng-click="navigateToFavorites()"><a>My Favorites</a></li>
 	        	<li ng-show="loggedIn">
-		            <a>Watchlists &#9662;</a>
+		            <a ng-click="navigateToWatchlists()">Watchlists &#9662;</a>
 		            <ul class="dropdown scroll-y min-width-style">
 		                <li ng-repeat="watchlist in watchlists"><a class="dropdown-a-style">{{watchlist.name}}</a></li>
 		            </ul>
@@ -32,6 +32,7 @@
 		<login></login>
 		<register></register>
 	</div>
+	<div class="busy-indicator" data-loading>
 </div>
 <!-- <div ng-controller="headerController" >
 	<div class="header-menu-bar-style">

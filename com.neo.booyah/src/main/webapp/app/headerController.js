@@ -41,6 +41,16 @@ angular.module('app').controller('headerController', ['$scope','$http', '$rootSc
 		});
 	}
 	
+	$scope.navigateToWatchlists = function(){
+		authService.checkSession().then(function(response){
+			if(response.data == "ok"){
+				$location.path("/watchlists");
+			}else{
+				$scope.loginDialog(true);
+			}
+		});
+	}
+	
 	$scope.userMenuOptionClick = function(option){
 		authService.checkSession().then(function(response){
 			if(response.data == "ok"){
@@ -164,7 +174,7 @@ angular.module('app').controller('headerController', ['$scope','$http', '$rootSc
 		event.stopPropagation();
 	}
 	
-	window.onclick = function() {
+	/*window.onclick = function() {
 		if($rootScope.sideMenuOpen){
 			$rootScope.sideMenuOpen = false;
 			$rootScope.$apply();
@@ -173,7 +183,7 @@ angular.module('app').controller('headerController', ['$scope','$http', '$rootSc
 		if(profileDropdown.classList.contains("profile-dropdown-show")){
 			profileDropdown.classList.remove("profile-dropdown-show");
 		}
-	};
+	};*/
 	
 	function afterAccountCreation() {
 		this.signup = {};

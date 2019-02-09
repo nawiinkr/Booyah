@@ -5,6 +5,7 @@ angular.module("app").controller("homeController", function ($scope, $location, 
 	$scope.newWatchlist = {
 			name : ""
 	};
+	$scope.favContext = null;
 	$scope.selectedWatchlist = null;
 	$scope.selectedShow = null;
 	$scope.loadMoreInProgress = false;
@@ -150,6 +151,7 @@ angular.module("app").controller("homeController", function ($scope, $location, 
 	
 	$scope.addToFavourites = function(that, show){
 		//var show = arguments[0];
+		$scope.favContext = that;
 		
 		authService.checkSession().then(function(response){
 			if(response.data == "Error"){
@@ -157,7 +159,7 @@ angular.module("app").controller("homeController", function ($scope, $location, 
 				$scope.login.showLoginDialog = true;
 			}else{
 				//add to favorites
-				return FavoritesCrudService.addFavorite(show.showId).then(function(response){
+				/*return FavoritesCrudService.addFavorite(show.showId).then(function(response){
 					if(response.data == "ok"){
 						var s = $scope;
 						$scope.shows[that.$index].isFavorite = show.showId;
@@ -167,9 +169,20 @@ angular.module("app").controller("homeController", function ($scope, $location, 
 					}
 				}, function(){
 					alert("Add to favorite API failed");
-				});
+				});*/
+				
+				FavoritesCrudService.addFavorite(show.showId, addToFavSuccess);
 			}
 		});
+	}
+	
+	function addToFavSuccess(response){
+		if(response.data == "ok"){
+			$scope.shows[$scope.favContext.$index].isFavorite = $scope.shows[$scope.favContext.$index].showId;
+			$rootScope.showNotification("Show added to favorites successfully");
+		}else{
+			alert("Failed to add favorite");
+		}
 	}
 	
 	$scope.removeFromFavourites = function(that, show){

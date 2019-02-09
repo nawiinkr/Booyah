@@ -8,7 +8,7 @@ public class SessionService {
 	public static String createSession(HttpServletRequest request, String username) {
 		
 		HttpSession session= request.getSession(true);
-		session.setMaxInactiveInterval(60);
+		//session.setMaxInactiveInterval(60);
 	    String user = (String) session.getAttribute("user");
 	     if (user!=null) {
 	    	 

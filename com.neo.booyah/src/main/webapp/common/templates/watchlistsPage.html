@@ -1,0 +1,27 @@
+<div class="tab">
+  <button class="tablinks">Your Watchlists</button>
+  <div class="watchlist-options-div">
+  	<select class="watchlist-select" ng-change="watchlistSelectionChange()" ng-show="watchlists.length" 
+  	ng-options="watchlist.name for watchlist in watchlists" ng-model="selectedWatchlist"
+  	ng-init=" selectedWatchlist = watchlists[0].name"  >
+  		<!-- <option ng-repeat="watchlist in watchlists">{{watchlist.name}}</option> -->
+  	</select>
+  	<a>Create Watchlist</a>
+  </div>
+</div>
+<div class="watchlist-complete-page">
+<!-- <div class="watchlist-side-panel watchlist-left-page">
+	<ul>
+	<li ng-class="{'selected-watchlist' : watchlist.selected}" ng-repeat="watchlist in watchlists"
+	 ng-click="watchlistSelectionChange(watchlist)"><a>{{watchlist.name}}</a>
+	 </li>
+	 </ul>
+</div> -->
+<h1>{{selectedWatchlist.name}}</h1>
+<div ng-repeat="show in selectedWatchlistData.shows"
+		style="display: inline-flex;position:relative" class="show-poster fav-poster">
+		<img title="{{show.name}}" src={{show.imageUrl}}
+			ng-click="openPoster(this)" class=""></img> 
+		<img src="assets/img/delete.png" title="Remove from favorites" ng-click="" class="remove-fav-span-button"/>
+	</div>
+</div>

@@ -21,6 +21,12 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     }).when('/search', {
     	templateUrl: 'common/templates/searchPage.tpl.html',
         controller: 'homeController'
+    }).when('/watchlists', {
+    	templateUrl: 'common/templates/watchlistsPage.html',
+        controller: 'watchlistsController',
+        resolve:{
+            loggedIn:onlyLoggedIn
+        }
     }).otherwise({
         redirectTo: "/home"
         });

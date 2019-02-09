@@ -1,5 +1,5 @@
 <div id="menu-overlay" class="menu-overlay" ng-controller="sideMenuController" ng-class="{'menu-overlay-open': $root.sideMenuOpen}">
 	<div id="menu-overlay-content" class="menu-overlay-content">
-		<a ng-repeat="menuOption in menuOptions" ng-click="navigateFromMenu(this, menuOption)">{{menuOption}}</a>
+		<a ng-repeat="watchlist in watchlists" ng-click="">{{watchlist.name}}</a>
 	</div>
 </div>

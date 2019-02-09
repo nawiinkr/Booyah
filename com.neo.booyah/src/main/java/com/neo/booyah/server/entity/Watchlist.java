@@ -3,7 +3,9 @@ package com.neo.booyah.server.entity;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 
 import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
@@ -53,7 +55,7 @@ public class Watchlist{
 	
 	@OneToMany(fetch= FetchType.LAZY)
     @JoinTable(name="WatchlistShows",joinColumns= @JoinColumn(name="WatchlistId"), inverseJoinColumns= @JoinColumn(name="ShowId"))
-    private Collection<Show> shows;
+    private Set<Show> shows;
 	
 	
 	@ManyToOne(cascade=CascadeType.ALL)
@@ -76,7 +78,7 @@ public class Watchlist{
 	}
 	
 	
-	public Watchlist(String watchlistId, String name, Timestamp timestamp, String userId, Collection<Show> shows) {
+	public Watchlist(String watchlistId, String name, Timestamp timestamp, String userId, Set<Show> shows) {
 		super();
 		this.watchlistId = watchlistId;
 		this.name = name;
@@ -101,7 +103,7 @@ public class Watchlist{
 	}
 
 
-	public void setShows(Collection<Show> shows) {
+	public void setShows(Set<Show> shows) {
 		this.shows = shows;
 	}
 
@@ -118,7 +120,7 @@ public class Watchlist{
 
 	public void addShow(Show show) {
         if (shows==null) {
-        	shows = new ArrayList<Show>();
+        	shows = new HashSet<Show>();
         }
         if (!shows.contains(show)) {
         	shows.add(show);

@@ -97,16 +97,16 @@ public class WatchlistDao {
 	      return  watchlist;
 	}
 
-	/*public Watchlist returnWatchlist(JSONObject inputJsonObj, HttpServletRequest request) {
+	public Watchlist returnWatchlist(JSONObject inputJsonObj) {
 		
-		String watchlistName = (String)inputJsonObj.get("watchlistName");
-		String email = (String) request.getSession(false).getAttribute("username");
-		Customer customer = UserDao.getUser(email).get(0);
+		String id = (String)inputJsonObj.get("watchlistId");
+		//String email = (String) request.getSession(false).getAttribute("username");
+		//Customer customer = UserDao.getUser(email).get(0);
 		
-		Watchlist watchlist = getWatchlist(watchlistName, customer.getUserId()).get(0);
+		Watchlist watchlist = getWatchlistById(id);
 		
 		return watchlist;
-	}*/
+	}
 	
 	
 	

@@ -461,17 +461,24 @@ input.ng-touched.ng-invalid{
 .menu-overlay-content{
 	position: relative;
     width: 100%;
-    text-align: center;
-    margin-top: 30px;
+    margin-top: -3px;
     align-self: center;
 }
 .menu-overlay-content a{
-	padding: 8px;
-    font-size: 36px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+    padding-left: 10%;
+    font-size: 25px;
     color: #818181;
     display: block;
     transition: 0.3s;
     cursor: pointer;
+}
+
+.watchlist-left-page{
+	float : left;
+	width : 17%;
+	background : #333;
 }
 
  .menu-overlay-content a:hover, .overlay a:focus {
@@ -547,4 +554,122 @@ input.ng-touched.ng-invalid{
 .suggestion-list li:hover{
 	color : #000000;
   	background-color : grey;
+}
+
+.watchlist-side-panel{
+	 position: fixed;
+    /* width: 100%; */
+    height: 100%;
+    margin-top: -3px;
+    /* align-self: center; */
+    overflow-x: hidden;
+}
+
+.watchlist-side-panel ul{
+	list-style: none;
+	padding: 0;
+}
+
+.watchlist-side-panel li{
+	padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.watchlist-side-panel a{
+	/* padding-top: 6px;
+	padding-bottom: 6px;
+    padding-left: 10%; */
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.watchlist-left-page{
+	float : left;
+	width : 17%;
+	background : #333;
+}
+
+ .watchlist-side-panel a:hover {
+    color: #f1f1f1;
+}
+
+.selected-watchlist{
+	background : #8D8D8E;
+}
+
+.selected-watchlist a{
+	color : #f1f1f1;
+}
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  border-top-width: 0px;
+  margin: -3px;
+}
+
+.tab button {
+  background-color: #ccc;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+.tab button:hover {
+  background-color: #ccc;
+}
+
+.watchlist-options-div{
+	float: right;
+	padding-right: 15px;
+	padding-top: 10px;
+}
+
+.watchlist-options-div a{
+	cursor: pointer;
+    padding-left: 15px;
+}
+
+.watchlist-options-div a:hover{
+	color : #8d8d8d
+}
+
+.watchlist-select{
+	width: 268px;
+    padding: 5px;
+    font-size: 16px;
+    line-height: 1;
+    border: 0;
+    border-radius: 5px;
+    height: 34px;
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #ddd;
+    -webkit-appearance: none;
+    background-position-x: 244px;
+}
+
+.watchlist-complete-page{
+	text-align : center;
+}
+
+.busy-indicator{
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+    overflow: hidden;
 }
