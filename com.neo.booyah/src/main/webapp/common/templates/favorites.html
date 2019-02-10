@@ -1,4 +1,4 @@
-<div class="posters-container">
+<div class="posters-container" ng-show="favoriteShows.length">
 <h1>My Favorites</h1>
 <div ng-repeat="show in favoriteShows"
 		style="display: inline-flex;position:relative" class="show-poster fav-poster">
@@ -6,4 +6,8 @@
 			ng-click="openPoster(this)" class=""></img> 
 		<img src="assets/img/delete.png" title="Remove from favorites" ng-click="" class="remove-fav-span-button"/>
 	</div>
+</div>
+<div class="zero-watchlists" ng-show="!favoriteShows.length">
+	<p>Nothing to see here, you DAWG !!</p>
+	<img src="assets/img/snoop.png" />
 </div>

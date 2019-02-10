@@ -27,6 +27,12 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         resolve:{
             loggedIn:onlyLoggedIn
         }
+    }).when('/profile', {
+    	templateUrl: 'common/templates/user.html',
+        controller: 'userController',
+        resolve:{
+            loggedIn:onlyLoggedIn
+        }
     }).otherwise({
         redirectTo: "/home"
         });

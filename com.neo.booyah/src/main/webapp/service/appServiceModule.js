@@ -5,11 +5,10 @@ app.service('commonService', ['$http', function($http){
 	this.login.signupScreen = false;
 	this.setBusy = false;
 	
-	this.get = function(url, successCallback, message, data){
+	this.get = function(url, successCallback, message){
 		return $http({
 			url : url,
-			method : 'GET',
-			data : data
+			method : 'GET'
 		}).then(successCallback, function(){
 			alert(message);
 		});

@@ -10,13 +10,6 @@
   </div>
 </div>
 <div class="watchlist-complete-page">
-<!-- <div class="watchlist-side-panel watchlist-left-page">
-	<ul>
-	<li ng-class="{'selected-watchlist' : watchlist.selected}" ng-repeat="watchlist in watchlists"
-	 ng-click="watchlistSelectionChange(watchlist)"><a>{{watchlist.name}}</a>
-	 </li>
-	 </ul>
-</div> -->
 <h1>{{selectedWatchlist.name}}</h1>
 <div ng-repeat="show in selectedWatchlistData.shows"
 		style="display: inline-flex;position:relative" class="show-poster fav-poster">
@@ -24,4 +17,8 @@
 			ng-click="openPoster(this)" class=""></img> 
 		<img src="assets/img/delete.png" title="Remove from favorites" ng-click="" class="remove-fav-span-button"/>
 	</div>
+</div>
+<div class="zero-watchlists" ng-show="!watchlists.length">
+	<img src="assets/img/bob-marley.png" />
+	<p>Looks like you haven't created any watchlist, Hit create watchlist button </p>
 </div>

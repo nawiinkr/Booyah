@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 import org.json.simple.JSONObject;
 
 import com.neo.booyah.server.dao.UserDao;
+import com.neo.booyah.server.entity.Customer;
 import com.neo.booyah.server.entity.Show;
 import com.neo.booyah.server.entity.Watchlist;
 import com.neo.booyah.server.entity.WatchlistDTO;
@@ -62,6 +63,28 @@ public class UserService {
 	   List<WatchlistDTO> wl = userDao.getWatchlists(request);
 	   
 	   return wl;
+   }
+   
+   @GET
+   @Path("/getUser")
+   @Consumes(MediaType.APPLICATION_JSON)
+   @Produces(MediaType.APPLICATION_JSON) 
+   public Customer getUserDetails(@Context HttpServletRequest request){
+	   String email = (String) request.getSession(false).getAttribute("username");
+	   Customer result = UserDao.getUser(email);
+	   
+	   return result;
+   }
+   
+   @POST
+   @Path("/updateUser")
+   @Consumes(MediaType.APPLICATION_JSON)
+   @Produces(MediaType.TEXT_PLAIN) 
+   public String updateUserDetails(JSONObject inputJsonObj){
+	   
+	   Customer result = UserDao.updateUser(inputJsonObj);
+	   
+	   return "ok";
    }
    
    

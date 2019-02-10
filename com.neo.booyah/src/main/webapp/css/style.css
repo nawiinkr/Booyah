@@ -2,6 +2,13 @@ body{
 	margin : 0;
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
 .header-ul{
 		margin : 0;
         padding: 0;
@@ -313,6 +320,10 @@ input[type=search]:after {
 .footer-button-save{
 	background: #333;
 	color : white
+}
+
+.footer-button-save:active{
+	opacity : 0.4;
 }
 
 .watchlist-panel{
@@ -672,4 +683,77 @@ input.ng-touched.ng-invalid{
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     padding-top: 60px;
     overflow: hidden;
+}
+
+.user-profile-page{
+	text-align : center;
+}
+.user-main-div{
+	width : 30%;
+	margin: auto;
+}
+
+.user-main-div .upper-div{
+	text-align : center;
+}
+
+.user-main-div .mid-div{
+	text-align : left;
+}
+
+.user-main-div .user-actions-section{
+	text-align : right;	
+}
+
+.user-main-div .mid-div p{
+	font-family: cursive;
+    font-weight: 300;
+    font-size: 18px;
+    /* padding-left: 10px;
+    padding-top: 20px; */
+    color: #798993;
+    /* float : right; */
+}
+
+
+.user-main-div input[type="text"], .user-main-div input[type="date"], .user-main-div input[type="password"]{
+	border: none;
+    border-bottom: 2px solid #f5f5f5;
+    font-family: cursive;
+    font-weight: 300;
+    font-size: 18px;
+    /* padding-left: 10px;
+    padding-top: 20px; */
+    color: #798993;
+    width : 100%;
+}
+
+.user-main-div input[type="submit"]{
+	background : #32E243;
+	border: none;
+}
+
+.user-main-div input[type="submit"]:disabled{
+	background : red;
+}
+
+.user-main-div .label-input-grp{
+	padding-left: 10px;
+    padding-top: 20px;
+}
+
+.user-main-div input:focus{
+	border-bottom: 4px solid #f5f5f5;
+}
+
+.user-main-div label{
+	color: #ccc;
+	font-size: 13px;
+	font-family: Roboto;
+	font-weight: 400;
+}
+
+.zero-watchlists{
+    text-align: center;
+    margin-top: 100px;
 }

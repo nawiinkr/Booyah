@@ -105,3 +105,19 @@ serviceModule.service('WatchlistCrudService', [ '$http', 'commonService', functi
     }
     
 } ]);
+
+serviceModule.service('UserCrudService', [ '$http', 'commonService', function($http, commonService) {
+	 
+	this.getUserDetails = function(successCallback){
+		var url = 'rest/Users/getUser';
+    	
+        return commonService.get(url, successCallback,"Getting User Details Failed !!");
+	}
+	
+	this.updateUserDetails = function(data, successCallback){
+		var url = 'rest/Users/updateUser';
+    	
+        return commonService.post(url, successCallback,"User Update Failed !", data);
+	}
+    
+}]);

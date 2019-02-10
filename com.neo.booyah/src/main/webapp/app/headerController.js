@@ -19,6 +19,7 @@ angular.module('app').controller('headerController', ['$scope','$http', '$rootSc
 			id : "Profile",
 			text : "Profile",
 			callback : function(){
+				$location.path("/profile");
 			},
 			weight : 1
 		},{

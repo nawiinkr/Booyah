@@ -109,7 +109,7 @@ public class UserDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static List<Customer> getUser(String email) {
+	public static Customer getUser(String email) {
 		  List<Customer> customerList = null;
 		  String queryString = "select * from Binged.Customer where email = :email";
 		  
@@ -124,10 +124,14 @@ public class UserDao {
 		  
 		  customerList = query.list();
 		  
+		  Customer result = customerList.get(0);
+		  
 		  session.getTransaction().commit();
 		  session.close();
+		  
+		  result.setPasswordSalt("");
 		    
-	      return  customerList;
+	      return  result;
 	}
 	
 	public String addFavorite(JSONObject inputJsonObj, HttpServletRequest request) {
@@ -221,22 +225,33 @@ public class UserDao {
 		
 		 Customer customer = null;
 		 
-		  /*String queryString = "select * from Binged.Customer where email = :email";
-		  
-		  session = HibernateUtil.getSessionFactory().openSession();
-	      session.beginTransaction();
-	      
-	      SQLQuery query = session.createSQLQuery(queryString);
-	      
-		  
-		  query.setParameter("email", email);
-		  query.addEntity(Customer.class);
-		  
-		  customer = (Customer) query.list().get(0);*/
-		 customer = getUser(email).get(0);
+		 customer = getUser(email);
 		  
 		  List<WatchlistDTO> watchlists = WatchlistDao.getWatchlistsByUser(customer.getUserId());
 		    
 	      return  watchlists;
+	}
+
+	public static Customer updateUser(JSONObject inputJsonObj) {
+		
+		String userId = (String) inputJsonObj.get("userId");
+		String name = (String) inputJsonObj.get("name");
+		String dob = (String) inputJsonObj.get("dob");
+		
+		
+		session = HibernateUtil.getSessionFactory().openSession();
+	    session.beginTransaction();
+	    
+	    Customer user = (Customer) session.get(Customer.class, userId);
+	    
+	    user.setName(name);
+	    user.setDob(dob);
+	    
+	    session.saveOrUpdate(user);
+	    
+	    session.getTransaction().commit();
+	    session.close();
+	    return user;
+		
 	}
 }

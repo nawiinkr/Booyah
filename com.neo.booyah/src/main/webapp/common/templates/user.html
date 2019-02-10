@@ -1,3 +1,38 @@
-<h1>None</h1><p>Nothing has been selected</p>
-
-<a href="home">click</a>
+<form name="userProfileForm" ng-submit="updateUserInfo()">
+<div class="user-profile-page">
+<div class="user-main-div">
+	<div class="upper-div">
+		<img style="width:100px; height=100px" src="assets/img/userdummy.png" /><br/>
+		<p>{{userData.email}}</p>
+	</div>
+	<div class="mid-div">
+		<div class="label-input-grp">
+			<label for="name">Name</label><br/>
+			<Input name="name" type="text" ng-model="userData.name" id="name" required><br/>
+			<span style="color:red; font-size:13px" ng-show="userProfileForm.name.$touched && userProfileForm.name.$invalid">Please enter valid name</span>
+		</div>
+		
+		<div class="label-input-grp">
+			<label for="dob">Date Of Birth</label><br/>
+			<Input name="dob" type="date" ng-model="userData.dob" id="dob" validate-birth><br/>
+			<span style="color:red; font-size:13px" ng-show="(userProfileForm.dob.$touched && userProfileForm.dob.$error.invalidDOB)">Please enter valid DOB</span>
+			<span style="color:red; font-size:13px" ng-show="(userProfileForm.dob.$touched && userProfileForm.dob.$error.ageRestrict && !userProfileForm.dob.$error.invalidDOB)">Age should be at-least 13 years</span>
+		</div>
+		
+		<div class="label-input-grp">
+			<label for="user-password-input">Password</label><br/>
+			<Input type="password" ng-model="userData.password" id="user-password-input" disabled/><br/>
+		</div>
+		
+		<div class="label-input-grp">
+			<p>Last Updated On {{userData.lastUpdate | date:'MM/dd/yyyy'}}</p>
+		</div>
+	</div>
+	
+	<div class="user-actions-section">
+		<input ng-disabled="userProfileForm.$invalid" type="submit" class="footer-button footer-button-save"/>
+		<!-- <a type="button" class="footer-button footer-button-cancel">Cancel</a> -->
+	</div>
+</div>
+</div>
+</form>

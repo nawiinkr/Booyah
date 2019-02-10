@@ -29,7 +29,7 @@ public class WatchlistDao {
 		String name = (String)inputJsonObj.get("name");
 		
 		String email = (String) request.getSession(false).getAttribute("username");
-		String userId = UserDao.getUser(email).get(0).getUserId();
+		String userId = UserDao.getUser(email).getUserId();
 		
 		watchlist.setName(name);
 		watchlist.setUserId(userId);

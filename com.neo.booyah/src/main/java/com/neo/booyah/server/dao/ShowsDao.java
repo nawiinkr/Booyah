@@ -31,7 +31,7 @@ public class ShowsDao {
 		   	List<ShowDTO>  showList = null; 
 			  
 			  String email = (String) request.getSession(false).getAttribute("username");
-			  Customer customer = UserDao.getUser(email).get(0);
+			  Customer customer = UserDao.getUser(email);
 			  
 			  String nativeQuery = "select * from binged.show as s left join (select ShowId as isFavorite from binged.favorite where UserId = \""+ customer.getUserId()+"\") as j on j.isFavorite=s.ShowId";
 			  
