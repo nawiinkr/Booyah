@@ -96,3 +96,53 @@ directives.directive('loading',   ['$http' ,function ($http)
     };
 
 }]);
+
+directives.directive('fileUpload', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'directives/fileUploader/fileUploaderTemplate.tpl.html'
+    }
+});
+
+directives.directive('fileModel', ['$parse', function ($parse) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+           var model = $parse(attrs.fileModel);
+           var modelSetter = model.assign;
+           
+           element.bind('change', function() {
+              scope.$apply(function() {
+                 modelSetter(scope, element[0].files[0]);
+              });
+           });
+        }
+     };
+  }]);
+
+directives.directive('validFile', function($parse) {
+    return {
+        require: 'ngModel',
+        restrict: 'A',
+        link: function(scope, el, attrs, ngModel) {
+            var model = $parse(attrs.ngModel);
+            var modelSetter = model.assign;
+            var maxSize = 1000000;
+            el.bind('change', function() {
+
+                scope.$apply(function() {
+                    scope.profileImage.maxSizeError = false;
+                    if (el[0].files.length > 1) {
+                        modelSetter(scope, el[0].files);
+                    } else {
+                        modelSetter(scope, el[0].files[0]);
+                    }
+                    var fileSize = el[0].files[0].size;
+                    if (fileSize > maxSize) {
+                        scope.profileImage.maxSizeError = true;
+                    }
+                });
+            });
+        }
+    }
+});

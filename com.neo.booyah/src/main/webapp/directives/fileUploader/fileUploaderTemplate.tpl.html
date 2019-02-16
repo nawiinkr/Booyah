@@ -1,0 +1,8 @@
+<div class="login-dialog-content animate-login">
+<form ng-submit="uploadProfileImage()">
+<span title="Close" ng-click="setFileUploaderVisible(false)" class="close-dialog">&times;</span>
+	Select image : <input  ng-model="profileImage.file" type="file" file-model = "profileImage.file" accept="image/*" valid-file required><br>
+	<p style="color:red" ng-show="profileImage.maxSizeError">Max file size exceeded (1 MB)</p><br/>
+	<input type="submit" value="Upload" ng-disabled="profileImage.maxSizeError || !profileImage.file"/>
+</form>
+</div>

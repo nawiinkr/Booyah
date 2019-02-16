@@ -17,6 +17,6 @@
         <mapping class="com.neo.booyah.server.entity.Customer"/>
         <mapping class="com.neo.booyah.server.entity.Watchlist"/>
         <mapping class="com.neo.booyah.server.entity.WatchlistDTO"/>
-        
+        <mapping class="com.neo.booyah.server.entity.Avatar"/>
     </session-factory>
 </hibernate-configuration>

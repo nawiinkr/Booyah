@@ -1,6 +1,12 @@
 package com.neo.booyah.server.dao;
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -16,13 +22,20 @@ import javax.servlet.http.HttpServletRequest;
 import org.hibernate.FetchMode;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.json.simple.JSONObject;
 
 import com.neo.booyah.server.entity.Show;
 import com.neo.booyah.server.entity.Watchlist;
 import com.neo.booyah.server.entity.WatchlistDTO;
 import com.neo.booyah.server.utils.HibernateUtil;
+//import com.sun.jersey.core.header.FormDataContentDisposition;
+import com.neo.booyah.server.entity.Avatar;
 import com.neo.booyah.server.entity.Customer;
+
+import org.apache.commons.io.IOUtils;
+import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
+import org.glassfish.jersey.media.multipart.FormDataParam;
 
 public class UserDao {
 	   //private static EntityManagerFactory factory;
@@ -253,5 +266,80 @@ public class UserDao {
 	    session.close();
 	    return user;
 		
+	}
+	
+	
+	public static String updateProfilePic(HttpServletRequest request, InputStream uploadedInputStream, FormDataContentDisposition fileDetail) {
+		
+		String email = (String) request.getSession(false).getAttribute("username");
+		Customer user = getUser(email);
+		int read = 0;
+		OutputStream outpuStream = null;
+        byte[] bytes = null;
+		try {
+			bytes = IOUtils.toByteArray(uploadedInputStream);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        
+       
+        
+        session = HibernateUtil.getSessionFactory().openSession();
+	    session.beginTransaction();
+	    
+	    @SuppressWarnings("unchecked")
+		List<Avatar> exists =  session.createCriteria(Avatar.class).add(Restrictions.eq("userId", user.getUserId())).list();
+	    Avatar av;
+	    
+	    if(exists.size() > 0) {
+	    	av = exists.get(0);
+	    	av.setAvatar(bytes);
+	    }else {
+	    	av = new Avatar();
+		    av.setFilename(fileDetail.getFileName());
+		    av.setAvatar(bytes);
+		    av.setUserId(user.getUserId());
+	    }
+	    
+	    
+	    session.saveOrUpdate(av);
+	    
+	    session.getTransaction().commit();
+	    session.close();
+		return "ok";
+	}
+
+	public static Avatar getUserProfilePic(HttpServletRequest request) {
+		String email = (String) request.getSession(false).getAttribute("username");
+		Customer user = getUser(email);
+		
+		session = HibernateUtil.getSessionFactory().openSession();
+	    session.beginTransaction();
+	    
+	    @SuppressWarnings("unchecked")
+		List<Avatar> av = session.createCriteria(Avatar.class).add(Restrictions.eq("userId", user.getUserId())).list();
+	    
+	    session.getTransaction().commit();
+	    session.close();
+	    
+	    return av.size() > 0 ? av.get(0) : new Avatar();
+		
+	}
+
+	public static String removeUserProfilePic(HttpServletRequest request) {
+		String email = (String) request.getSession(false).getAttribute("username");
+		Customer user = getUser(email);
+		
+		session = HibernateUtil.getSessionFactory().openSession();
+	    session.beginTransaction();
+	    
+	    String q = "delete from Binged.Avatar where userId= :id";
+	    int del = session.createSQLQuery(q).setParameter("id", user.getUserId()).executeUpdate();
+	    
+		 session.getTransaction().commit();
+		 session.close();
+	    
+	    return "ok";
 	}
 }

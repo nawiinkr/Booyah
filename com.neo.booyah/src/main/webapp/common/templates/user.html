@@ -2,7 +2,10 @@
 <div class="user-profile-page">
 <div class="user-main-div">
 	<div class="upper-div">
-		<img style="width:100px; height=100px" src="assets/img/userdummy.png" /><br/>
+		<img id="userProfilePic" style="width:100px; height=100px" src="assets/img/userdummy.png" />
+		<img style="cursor : pointer" title="Upload new profile picture" src="assets/img/edit-profile-image-pencil.png" ng-click="setFileUploaderVisible(true)"/>
+		<img style="cursor : pointer; height : 15px ; width : 15px;" title="Remove Profile Picture" src="assets/img/delete-profile-pic.png" ng-click="removeProfilePicture()"/>
+		<br/>
 		<p>{{userData.email}}</p>
 	</div>
 	<div class="mid-div">
@@ -36,3 +39,6 @@
 </div>
 </div>
 </form>
+<div id="fileUploadDialog" class="login-dialog watchlist-panel" ng-class="{'show-login-dialog': showFileUploadDialog}">
+		<file-upload></file-upload>
+	</div>
