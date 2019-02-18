@@ -13,12 +13,21 @@ public class HibernateUtil {
     private static SessionFactory sessionFactory;
     
     public static SessionFactory getSessionFactory() {
-        if (null != sessionFactory)
-            return sessionFactory;
+        if (null != sessionFactory) {
+        	return sessionFactory;
+        }
+            
         
         Configuration configuration = new Configuration();
-
-        configuration.configure();
+        
+        String  prodScenario = System.getenv("BINGED_PROD");
+        
+        if(prodScenario != null && prodScenario.equals("false")) {
+        	configuration.configure("hibernate_local.cfg.xml");
+        }else {
+        	configuration.configure("hibernate.cfg.xml");
+        }
+        
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
         try {
             sessionFactory = configuration.buildSessionFactory(serviceRegistry);
