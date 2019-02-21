@@ -24,6 +24,8 @@ import com.neo.booyah.server.entity.Customer;
 import com.neo.booyah.server.entity.Show;
 import com.neo.booyah.server.entity.Watchlist;
 import com.neo.booyah.server.entity.WatchlistDTO;
+import com.neo.booyah.server.exceptions.GenericException;
+
 //import com.sun.jersey.core.header.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
@@ -35,9 +37,12 @@ public class UserService {
    @POST 
    @Path("/create")
    @Consumes(MediaType.APPLICATION_JSON)
-   @Produces(MediaType.TEXT_PLAIN) 
-   public String createUser(JSONObject inputJsonObj){ 
-      return userDao.createUser(inputJsonObj); 
+   @Produces(MediaType.APPLICATION_JSON) 
+   public Response createUser(JSONObject inputJsonObj) throws GenericException{ 
+	   if(true) {
+		   throw new GenericException("this is exception");
+	   }
+      return Response.ok(userDao.createUser(inputJsonObj), MediaType.TEXT_PLAIN).build();
    }
    
    @POST

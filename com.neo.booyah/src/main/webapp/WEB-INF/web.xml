@@ -10,7 +10,7 @@
     <init-param>
         <param-name>jersey.config.server.provider.packages</param-name>
         <param-value>
-            com.neo.booyah.server.api
+            com.neo.booyah.server.api;com.neo.booyah.server.exceptions
         </param-value>
     </init-param>
    <init-param>
