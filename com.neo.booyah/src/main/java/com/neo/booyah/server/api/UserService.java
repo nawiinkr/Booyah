@@ -39,9 +39,9 @@ public class UserService {
    @Consumes(MediaType.APPLICATION_JSON)
    @Produces(MediaType.APPLICATION_JSON) 
    public Response createUser(JSONObject inputJsonObj) throws GenericException{ 
-	   if(true) {
-		   throw new GenericException("this is exception");
-	   }
+	  if(userDao.userExists((String)inputJsonObj.get("email"))) {
+		  throw new GenericException("User already exists");
+	  }
       return Response.ok(userDao.createUser(inputJsonObj), MediaType.TEXT_PLAIN).build();
    }
    

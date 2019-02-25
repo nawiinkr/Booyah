@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.hibernate.FetchMode;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.json.simple.JSONObject;
 
@@ -63,6 +64,16 @@ public class UserDao {
         session.getTransaction().commit();
         session.close();
 		return "ok";
+	}
+	
+	public boolean userExists(String email) {
+		session = HibernateUtil.getSessionFactory().openSession();
+    	session.beginTransaction();
+    	
+    	Long count = (Long) session.createCriteria(Customer.class).add(Restrictions.eq("email", email)).setProjection(Projections.rowCount()).uniqueResult();
+    	session.getTransaction().commit();
+        session.close();
+		return count.intValue() > 0;
 	}
 	
 	public boolean authenticateUser(String user, String pass) {
