@@ -75,7 +75,7 @@ public class UserService {
    @Produces(MediaType.APPLICATION_JSON) 
    public List<WatchlistDTO> getWatchlists(@Context HttpServletRequest request){
 	   List<WatchlistDTO> wl = userDao.getWatchlists(request);
-	   
+	   System.out.print("Getting Watchlists");
 	   return wl;
    }
    

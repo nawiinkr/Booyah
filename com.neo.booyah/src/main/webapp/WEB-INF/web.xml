@@ -10,7 +10,7 @@
     <init-param>
         <param-name>jersey.config.server.provider.packages</param-name>
         <param-value>
-            com.neo.booyah.server.api;com.neo.booyah.server.exceptions
+            com.neo.booyah.server.api;com.neo.booyah.server.exceptions;com.neo.booyah.auth
         </param-value>
     </init-param>
    <init-param>
@@ -19,7 +19,7 @@
 		</init-param>
 		<init-param>
 		    <param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name>
-		    <param-value>com.neo.booyah.server.auth.AuthFilter</param-value>
+		    <param-value>com.neo.booyah.auth.AuthFilter</param-value>
 		</init-param>
 </servlet>
 	<servlet-mapping>
